@@ -8,15 +8,15 @@ class GameScene extends Phaser.Scene {
         this.load.atlas(
             'knightAttack',
             "./assets/knightAttack.png",
-            "./assets/knightAttack.json"
+            "./assets/knightAttackFull.json"
         );
 
-        
+
     }
 
     create() {
 
-        // Create animations
+        // CREATE ANIMATIONS
         // Attacks 1, 2 and 3
         this.anims.create({
             key: 'knightAttackFull',
@@ -31,17 +31,19 @@ class GameScene extends Phaser.Scene {
         });
 
         // Attack 1
+        const aAttack1 = this.anims.generateFrameNames('knightAttack', {
+            prefix: 'knightAttack-',
+            start: 0,
+            end: 9,
+            suffix: '.png'
+        });
         this.anims.create({
             key: 'knightAttack1',
-            frames: this.anims.generateFrameNames('knightAttack', {
-                prefix: 'knightAttack-',
-                start: 0,
-                end:8,
-                suffix: '.png'
-            }),
+            frames: aAttack1,
             duration: 800
         });
-        
+        console.log(aAttack1);
+
         // Add sprites
         const oKnight = this.add.sprite(50, 50, 'knightAttack');
 
@@ -51,8 +53,6 @@ class GameScene extends Phaser.Scene {
             oKnight.play('knightAttack1');
 
         });
-
-        // oKnight.play('knightAttackFull');
     }
 }
 
