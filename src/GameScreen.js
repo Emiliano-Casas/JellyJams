@@ -4,7 +4,88 @@ class GameScene extends Phaser.Scene {
 
     preload() {
         this.load.image('background', './assets/background.jpg');
+        this.preloadWiz();
+        this.preloadSlime();
+    }
 
+    create() {
+        this.add.image(320, 320, 'background');
+        this.createWiz();
+        this.createSlime();
+    }
+
+
+    // --------------------------------------------
+    // SLIME
+    // --------------------------------------------
+    preloadSlime() {
+        this.load.atlas(
+            'slimeSprite',
+            './assets/slime.png',
+            './assets/slime.json'
+        )
+    }
+
+    createSlime() {
+        // const oSlime = this.add.sprite(320, 320, 'slimeSprite');
+
+        const oSlime = this.physics.add.sprite(320, 320, 'slimeSprite');
+        oSlime.setVelocity(20,30);
+
+        // --------------------------------------------------------------
+        // Create Animations
+        // --------------------------------------------------------------
+        this.anims.create({
+            key: 'slimeSpawn',
+            frames: this.anims.generateFrameNames(
+                'slimeSprite',
+                {
+                    prefix: "slime-",
+                    start: 0,
+                    end: 10,
+                    suffix: '.png'
+                }),
+            duration: 1100,
+        });
+        this.anims.create({
+            key: 'slimeBounce',
+            frames: this.anims.generateFrameNames(
+                'slimeSprite',
+                {
+                    prefix: "slime-",
+                    start: 11,
+                    end: 16,
+                    suffix: '.png'
+                }),
+            duration: 600,
+            repeat: 9
+        });
+        this.anims.create({
+            key: 'slimeDie',
+            frames: this.anims.generateFrameNames(
+                'slimeSprite',
+                {
+                    prefix: "slime-",
+                    start: 17,
+                    end: 24,
+                    suffix: '.png'
+                }),
+            duration: 800,
+            hideOnComplete: true // Should delete slime object after this
+        });
+        // --------------------------------------------------------------
+        // Set Animation Triggers
+        // --------------------------------------------------------------
+        oSlime.play('slimeSpawn')
+            .anims.chain('slimeBounce')
+            .anims.chain('slimeDie')
+    }
+
+
+    // --------------------------------------------
+    // WIZARD
+    // --------------------------------------------
+    preloadWiz() {
         // Idle
         this.load.atlas(
             'wizIdleRightSprite',
@@ -17,15 +98,13 @@ class GameScene extends Phaser.Scene {
             "./assets/WizAttack2Right.png",
             "./assets/WizAttack2Right.json"
         );
-        
     }
 
-    create() {
+    createWiz() {
         // --------------------------------------------------------------
         // Add Objects
         // --------------------------------------------------------------
-        this.add.image(320,320,'background');
-        const oWiz = this.add.sprite(320,300, 'wizAttack1Sprite');
+        const oWiz = this.add.sprite(320, 570, 'wizAttack1Sprite');
         // --------------------------------------------------------------
         // Create Animations
         // --------------------------------------------------------------
@@ -63,7 +142,7 @@ class GameScene extends Phaser.Scene {
             }),
             duration: 300,
             repeat: -1,
-            
+
         });
         // Smash
         this.anims.create({
@@ -101,7 +180,6 @@ class GameScene extends Phaser.Scene {
         // Add sprites
         oWiz.play('wizIdleRight');
     }
-
 }
 
 export default GameScene;
