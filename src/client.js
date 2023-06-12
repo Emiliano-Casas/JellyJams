@@ -3,14 +3,20 @@ import Phaser from "phaser";
 import GameScreen from "./GameScreen";
 
 const oGameConfig = {
-    width: 320,
-    height: 180,
     type: Phaser.AUTO,
     backgroundColor: '#f0f8ff',
-    scale: {
-        parent: 'canvasParent',
-        mode: Phaser.Scale.FIT
-    }
+    // DIST 
+    width: 640,
+    height: 640,
+    // scale: {
+    //     parent: 'canvasParent',
+    //     mode: Phaser.Scale.FIT
+    // }
+
+    // // DEV
+    // width: 640,
+    // height: 360,
+
 };
 
 const oGame = new Phaser.Game(oGameConfig);

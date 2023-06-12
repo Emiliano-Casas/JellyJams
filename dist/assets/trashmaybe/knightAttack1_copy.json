@@ -208,6 +208,48 @@
 					},
 					"spriteSourceSize": {
 						"x": 56,
+						"y": 16,
+						"w": 23,
+						"h": 31
+					},
+					"frame": {
+						"x": 1,
+						"y": 35,
+						"w": 23,
+						"h": 31
+					}
+				},
+				{
+					"filename": "knightAttack-10.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 146,
+						"h": 66
+					},
+					"spriteSourceSize": {
+						"x": 56,
+						"y": 16,
+						"w": 23,
+						"h": 31
+					},
+					"frame": {
+						"x": 85,
+						"y": 1,
+						"w": 23,
+						"h": 31
+					}
+				},
+				{
+					"filename": "knightAttack-11.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 146,
+						"h": 66
+					},
+					"spriteSourceSize": {
+						"x": 56,
 						"y": 15,
 						"w": 26,
 						"h": 32
@@ -218,7 +260,7 @@
 						"w": 26,
 						"h": 32
 					}
-				}
+				} 
 			]
 		}
 	],

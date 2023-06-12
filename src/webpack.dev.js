@@ -1,8 +1,15 @@
-const path = require('path')
+const path = require('path');
 
 module.exports = {
-    mode: 'production',
-    entry: './src/client/client.js',
+    mode: 'development',
+    entry: './src/client.js',
+    devtool: 'eval-source-map',
+    devServer: {
+        static: {
+            directory: path.join(__dirname, '../dist'),
+        },
+        hot: true,
+    },
     module: {
         rules: [
             {
@@ -17,9 +24,9 @@ module.exports = {
     },
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, '../../dist/client'),
+        path: path.resolve(__dirname, '../dist')
     },
     performance: {
-        hints: false,
-    },
-}
+        hints: false
+    }
+};
