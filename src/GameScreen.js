@@ -2,16 +2,20 @@ import Phaser from "phaser";
 
 class GameScene extends Phaser.Scene {
 
+    oSlime;
+
     preload() {
         this.load.image('background', './assets/background.jpg');
         this.preloadWiz();
         this.preloadSlime();
     }
 
-    create() {
+    create() {        
         this.add.image(320, 320, 'background');
+        this.add.text(80, 520, "--------------------------------------------------");
+        this.add.text(80, 320, "--------------------------------------------------");
         this.createWiz();
-        this.createSlime();
+        this.createSlime(); 
     }
 
 
@@ -27,11 +31,6 @@ class GameScene extends Phaser.Scene {
     }
 
     createSlime() {
-        // const oSlime = this.add.sprite(320, 320, 'slimeSprite');
-
-        const oSlime = this.physics.add.sprite(320, 320, 'slimeSprite');
-        oSlime.setVelocity(20,30);
-
         // --------------------------------------------------------------
         // Create Animations
         // --------------------------------------------------------------
@@ -71,16 +70,33 @@ class GameScene extends Phaser.Scene {
                     suffix: '.png'
                 }),
             duration: 800,
-            hideOnComplete: true // Should delete slime object after this
+            // hideOnComplete: true // Should delete slime object after this
         });
+        
+        this.slimeSpawnLoop();
+    }
+
+    slimeSpawnLoop() {
+        // --------------------------------------------------------------
+        // Create slime object
+        // --------------------------------------------------------------
+        const oSlime = this.physics.add.sprite(320, 320, 'slimeSprite');
+        oSlime.on('animationcomplete-slimeDie', () => {
+            oSlime.destroy();
+        });
+        
         // --------------------------------------------------------------
         // Set Animation Triggers
         // --------------------------------------------------------------
         oSlime.play('slimeSpawn')
             .anims.chain('slimeBounce')
             .anims.chain('slimeDie')
+        
+        // --------------------------------------------------------------
+        // Movement
+        // --------------------------------------------------------------
+        oSlime.setVelocity(20, 30);
     }
-
 
     // --------------------------------------------
     // WIZARD
@@ -164,13 +180,13 @@ class GameScene extends Phaser.Scene {
             oWiz.play('wizAttack2Right');
         });
         // Hold trigger
-        oWiz.on('animationcomplete-wizAttack2Right', function () {
+        oWiz.on('animationcomplete-wizAttack2Right', () => {
             if (oKeyH.isDown) {
                 oWiz.play('wizHoldStaff');
             } else {
                 oWiz.play('wizIdleRight');
             }
-        }.bind(this));
+        });
         // Smash trigger
         oKeyH.on("up", () => {
             if ('wizHoldStaff' == oWiz.anims.currentAnim.key) {
