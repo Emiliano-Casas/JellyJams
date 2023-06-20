@@ -1,27 +1,11 @@
 import Phaser from "phaser";
-import { toASCII } from "punycode";
 
 class GameScene extends Phaser.Scene {
 
-    aNotes = []
+    aNotes = [];
 
     preload() {
         this.load.image('background', './assets/background.jpg');
-        this.preloadWiz();
-        this.preloadSlime();
-        this.load.audio('metro', './assets/metro_180bpm_5min.mp3');
-        this.preloadTrack();
-    }
-
-    preloadSlime() {
-        this.load.atlas(
-            'slimeSprite',
-            './assets/slime.png',
-            './assets/slime.json'
-        )
-    }
-
-    preloadWiz() {
         // Idle
         this.load.atlas(
             'wizIdleRightSprite',
@@ -34,7 +18,21 @@ class GameScene extends Phaser.Scene {
             "./assets/WizAttack2Right.png",
             "./assets/WizAttack2Right.json"
         );
-    }
+        // Slime
+        this.load.atlas(
+            'slimeSprite',
+            './assets/slime.png',
+            './assets/slime.json'
+        );
+        // Demon
+        this.load.atlas(
+            'demonSprite',
+            './assets/demon.png',
+            './assets/demon.json'
+        );
+        // Audio        
+        this.load.audio('metro', './assets/metro_180bpm_5min.mp3');
+    };
 
     create() {
         this.add.image(320, 320, 'background');
@@ -43,34 +41,68 @@ class GameScene extends Phaser.Scene {
         this.add.text(80, 544, "--------------------------------------------------");
 
         this.createWiz();
-        // this.createSlime();
+        this.slimeAnimations();
+        this.demonAnimations();
 
-        this.createTrack();
-    }
-
-    update(time, delta) {
-        // console.log("time");
-        // console.log(time);
-        // console.log("delta");
-        // console.log(delta);
-    }
+        this.createTrack().play();
+        this.cleanNotes();
+    };
 
     createTrack() {
         const music = this.sound.add('metro');
-
-        const timeline = this.add.timeline([
+        const aTimeline = [
             {
-                at: 0
+                at: 0,
+                sound: 'metro',
+                run: () => { music.play() }
             }
-        ]);
+        ];
+        for (var i = 0; i < 200; i++) {
+            aTimeline.push({
+                at: i * 1333.333,
+                run: this.createSlime.bind(this)
+            }, {
+                at: i * 3999.999,
+                run: this.createDemon.bind(this)
+            });
+        }
 
-        music.play();
-    }
+        return this.add.timeline(aTimeline);
+    };
 
-    createSlime() {
-        // --------------------------------------------------------------
-        // Create Animations
-        // --------------------------------------------------------------
+    cleanNotes() {
+        this.aNotes.forEach((ele, index) => {
+            const ayylmao = ele;
+        });
+    };
+
+    demonAnimations() {
+        this.anims.create({
+            key: 'demonIdle',
+            frames: this.anims.generateFrameNames(
+                'demonSprite',
+                {
+                    prefix: 'demon-',
+                    start: 0,
+                    end: 5,
+                    suffix: '.png'
+                }),
+            duration: 1333.333,
+            repeat: 10
+        });
+    };
+
+    createDemon() {
+        const oDemon = this.physics.add.sprite(280, 320, 'demonSprite');
+        this.aNotes.push(oDemon);
+        oDemon.on('animationcomplete-demonIdle', () => {
+            oDemon.destroy();
+        })
+        oDemon.setVelocity(-10, 20);
+        oDemon.play('demonIdle');
+    };
+
+    slimeAnimations() {
         this.anims.create({
             key: 'slimeSpawn',
             frames: this.anims.generateFrameNames(
@@ -93,8 +125,8 @@ class GameScene extends Phaser.Scene {
                     end: 16,
                     suffix: '.png'
                 }),
-            duration: 500,
-            repeat: 16
+            duration: 333.3333,
+            repeat: 22
         });
         this.anims.create({
             key: 'slimeDie',
@@ -108,20 +140,12 @@ class GameScene extends Phaser.Scene {
                 }),
             duration: 800,
         });
+    };
 
-        this.slimeSpawnLoop();
-    }
-
-    slimeSpawnLoop() {
-        // --------------------------------------------------------------
-        // Create slime object
-        // --------------------------------------------------------------
-        const oSlime = this.physics.add.sprite(320, 320, 'slimeSprite');
-        oSlime.index = this.aNotes.push(oSlime) - 1;
-        console.log(this.aNotes);
-
+    createSlime() {
+        const oSlime = this.physics.add.sprite(360, 320, 'slimeSprite');
+        this.aNotes.push(oSlime);
         oSlime.on('animationcomplete-slimeDie', () => {
-            this.aNotes.splice(oSlime.index, 1);
             oSlime.destroy();
         });
         oSlime.on('animationcomplete-slimeSpawn', () => {
@@ -129,25 +153,17 @@ class GameScene extends Phaser.Scene {
             oSlime.play('slimeBounce');
         });
         oSlime.on('animationcomplete-slimeBounce', () => {
-            console.log("slime index " + oSlime.index);
-            this.aNotes.splice(oSlime.index, 1);
             oSlime.destroy();
         });
-        oSlime.play('slimeSpawn');
+        oSlime.setVelocity(10, 40);
+        oSlime.play('slimeBounce');
 
         // setTimeout(this.slimeSpawnLoop.bind(this), 2500); // DELETE THIS
 
-    }
-
+    };
 
     createWiz() {
-        // --------------------------------------------------------------
-        // Add Objects
-        // --------------------------------------------------------------
         const oWiz = this.add.sprite(320, 570, 'wizAttack1Sprite');
-        // --------------------------------------------------------------
-        // Create Animations
-        // --------------------------------------------------------------
         // Idle
         this.anims.create({
             key: 'wizIdleRight',
@@ -203,6 +219,10 @@ class GameScene extends Phaser.Scene {
         oKeyH.on("down", (key, event) => {
             oWiz.play('wizAttack2Right');
         });
+        // Hit/miss
+        oWiz.on('animationstart-wizAttack2Right', (idk) => {
+            this.swing('wizAttack2Right');
+        });
         // Hold trigger
         oWiz.on('animationcomplete-wizAttack2Right', () => {
             if (oKeyH.isDown) {
@@ -219,7 +239,18 @@ class GameScene extends Phaser.Scene {
         });
         // Add sprites
         oWiz.play('wizIdleRight');
+    };
+
+    swing(sAnimation) {
+        this.aNotes.forEach((ele, index) => {
+            const ayylmao = ele;
+        });
+        // switch(sAnimation) {
+        //     case 'wizAttack2Right':
+
+        //         break;
     }
+
 }
 
 export default GameScene;

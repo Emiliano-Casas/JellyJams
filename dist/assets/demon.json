@@ -1,0 +1,141 @@
+{
+	"textures": [
+		{
+			"image": "demon.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 960,
+				"h": 144
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "demon-0.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 160,
+						"h": 144
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 160,
+						"h": 144
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 160,
+						"h": 144
+					}
+				},
+				{
+					"filename": "demon-1.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 160,
+						"h": 144
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 160,
+						"h": 144
+					},
+					"frame": {
+						"x": 163,
+						"y": 1,
+						"w": 160,
+						"h": 144
+					}
+				},
+				{
+					"filename": "demon-2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 160,
+						"h": 144
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 160,
+						"h": 144
+					},
+					"frame": {
+						"x": 320,
+						"y": 1,
+						"w": 160,
+						"h": 144
+					}
+				},
+				{
+					"filename": "demon-3.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 160,
+						"h": 144
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 160,
+						"h": 144
+					},
+					"frame": {
+						"x": 480,
+						"y": 1,
+						"w": 160,
+						"h": 144
+					}
+				},
+				{
+					"filename": "demon-4.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 160,
+						"h": 144
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 160,
+						"h": 144
+					},
+					"frame": {
+						"x": 640,
+						"y": 1,
+						"w": 160,
+						"h": 144
+					}
+				},
+				{
+					"filename": "demon-5.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 160,
+						"h": 144
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 160,
+						"h": 144
+					},
+					"frame": {
+						"x": 800,
+						"y": 1,
+						"w": 160,
+						"h": 144
+					}
+				}
+			]
+		}
+	]
+}
