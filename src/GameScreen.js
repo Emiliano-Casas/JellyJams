@@ -216,12 +216,14 @@ class GameScene extends Phaser.Scene {
         // --------------------------------------------------------------
         const oKeyH = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.J);
         // Attack 2 trigger
-        oKeyH.on("down", (key, event) => {
+        oKeyH.on("down", () => {
             oWiz.play('wizAttack2Right');
         });
         // Hit/miss
-        oWiz.on('animationstart-wizAttack2Right', (idk) => {
-            this.swing('wizAttack2Right');
+        oWiz.on('animationstart', (animation) => {
+            if (animation.key == 'wizAttack2Right') {
+                this.swing('wizAttack2Right');
+            }
         });
         // Hold trigger
         oWiz.on('animationcomplete-wizAttack2Right', () => {
@@ -242,15 +244,16 @@ class GameScene extends Phaser.Scene {
     };
 
     swing(sAnimation) {
-        this.aNotes.forEach((ele, index) => {
-            const ayylmao = ele;
+        this.aNotes.forEach((oSprite) => {
+            if (520 < oSprite.y & oSprite.y < 544) {
+                switch (oSprite.texture.key) {
+                    case 'slimeSprite':
+                        console.log(this.aNotes);
+                        oSprite.play('slimeDie');
+                        break;
+                }
+            }
         });
-        // switch(sAnimation) {
-        //     case 'wizAttack2Right':
-
-        //         break;
     }
-
 }
-
 export default GameScene;
