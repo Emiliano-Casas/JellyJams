@@ -4,7 +4,7 @@
 			"image": "slimeboyAttack1.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 540,
+				"w": 768,
 				"h": 180
 			},
 			"scale": 1,
@@ -14,19 +14,19 @@
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 180,
+						"w": 256,
 						"h": 180
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 180,
+						"w": 256,
 						"h": 180
 					},
 					"frame": {
 						"x": 1,
 						"y": 1,
-						"w": 180,
+						"w": 256,
 						"h": 180
 					}
 				},
@@ -35,7 +35,7 @@
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 180,
+						"w": 256,
 						"h": 180
 					},
 					"spriteSourceSize": {
@@ -45,9 +45,9 @@
 						"h": 180
 					},
 					"frame": {
-						"x": 180,
+						"x": 256,
 						"y": 1,
-						"w": 180,
+						"w": 256,
 						"h": 180
 					}
 				},
@@ -56,19 +56,19 @@
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 180,
+						"w": 256,
 						"h": 180
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 180,
+						"w": 256,
 						"h": 180
 					},
 					"frame": {
-						"x": 360,
+						"x": 512,
 						"y": 1,
-						"w": 180,
+						"w": 256,
 						"h": 180
 					}
 				}

@@ -11,8 +11,8 @@ class GameScene extends Phaser.Scene {
         // Slime boy
         this.load.atlas(
             'slimeboyAttack1Sprite',
-            './assets/slimeboyAttack1.png',
-            './assets/slimeboyAttack1.json'
+            './assets/slimeboyAttack1_180.png',
+            './assets/slimeboyAttack1_180.json'
         );
 
         // Slime
@@ -85,7 +85,7 @@ class GameScene extends Phaser.Scene {
     };
 
     createSlimeboy() {
-        const oSlimeboy = this.physics.add.sprite(452, 545, 'slimeboyAttack1Sprite');
+        const oSlimeboy = this.physics.add.sprite(386, 580, 'slimeboyAttack1Sprite');
 
         // animations
         this.anims.create({
@@ -98,8 +98,8 @@ class GameScene extends Phaser.Scene {
                     end: 2,
                     suffix: '.png'
                 }),
-            duration: 150
-            ,yoyo: true
+            duration: 150,
+            yoyo: true
         });
 
         const oKeyH = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.J);

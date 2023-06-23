@@ -2,35 +2,35 @@
 
 {
 	"filename": "slimeAttack1_128-1.png",
-	"frame": {"x":0,"y":0,"w":384,"h":128},
+	"frame": {"x":0,"y":0,"w":256,"h":128},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":384,"h":128},
-	"sourceSize": {"w":384,"h":128}
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":128},
+	"sourceSize": {"w":256,"h":128}
 },
 {
 	"filename": "slimeAttack1_128-2.png",
-	"frame": {"x":384,"y":0,"w":384,"h":128},
+	"frame": {"x":256,"y":0,"w":256,"h":128},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":384,"h":128},
-	"sourceSize": {"w":384,"h":128}
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":128},
+	"sourceSize": {"w":256,"h":128}
 },
 {
 	"filename": "slimeAttack1_128-3.png",
-	"frame": {"x":768,"y":0,"w":384,"h":128},
+	"frame": {"x":512,"y":0,"w":256,"h":128},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":384,"h":128},
-	"sourceSize": {"w":384,"h":128}
+	"spriteSourceSize": {"x":0,"y":0,"w":256,"h":128},
+	"sourceSize": {"w":256,"h":128}
 }],
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
 	"image": "slimeboy_fake.png",
 	"format": "RGBA8888",
-	"size": {"w":1152,"h":128},
+	"size": {"w":768,"h":128},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:0badb89ad2d2ba7b163ccdb49158e579:f0dd026a24d0610504a46172139f3ca9:fa84228a91be538a2c498dfe31e146f4$"
+	"smartupdate": "$TexturePacker:SmartUpdate:f31db8689704fbe0419b837821677ae2:dcbacb177a6e8e536dd57fab1a7108c7:fa84228a91be538a2c498dfe31e146f4$"
 }
 }
