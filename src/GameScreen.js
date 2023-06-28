@@ -6,18 +6,15 @@ class GameScene extends Phaser.Scene {
 
     preload() {
         this.load.image('background', './assets/background.jpg');
-        // Idle
+        // Audio        
+        this.load.audio('metro', './assets/metro_180bpm_5min.mp3');
+        // Slime boy
         this.load.atlas(
-            'wizIdleRightSprite',
-            "./assets/WizIdleRight.png",
-            "./assets/WizIdleRight.json"
+            'slimeboyAttack1Sprite',
+            './assets/slimeboyAttack1_180.png',
+            './assets/slimeboyAttack1_180.json'
         );
-        // Attack2
-        this.load.atlas(
-            'wizAttack2RightSprite',
-            "./assets/WizAttack2Right.png",
-            "./assets/WizAttack2Right.json"
-        );
+
         // Slime
         this.load.atlas(
             'slimeSprite',
@@ -30,8 +27,18 @@ class GameScene extends Phaser.Scene {
             './assets/demon.png',
             './assets/demon.json'
         );
-        // Audio        
-        this.load.audio('metro', './assets/metro_180bpm_5min.mp3');
+        //  Wiz Idle
+        this.load.atlas(
+            'wizIdleRightSprite',
+            "./assets/WizIdleRight.png",
+            "./assets/WizIdleRight.json"
+        );
+        // Wiz Attack2
+        this.load.atlas(
+            'wizAttack2RightSprite',
+            "./assets/WizAttack2Right.png",
+            "./assets/WizAttack2Right.json"
+        );
     };
 
     create() {
@@ -40,7 +47,8 @@ class GameScene extends Phaser.Scene {
         this.add.text(80, 520, "--------------------------------------------------");
         this.add.text(80, 544, "--------------------------------------------------");
 
-        this.createWiz();
+        // this.createWiz();
+        this.createSlimeboy();
         this.slimeAnimations();
         this.demonAnimations();
 
@@ -75,6 +83,63 @@ class GameScene extends Phaser.Scene {
             const ayylmao = ele;
         });
     };
+
+    createSlimeboy() {
+        const oSlimeboy = this.physics.add.sprite(386, 580, 'slimeboyAttack1Sprite');
+
+        // animations
+        this.anims.create({
+            key: 'slimeboyAttack1',
+            frames: this.anims.generateFrameNames(
+                'slimeboyAttack1Sprite',
+                {
+                    prefix: 'slimeboyAttack1-',
+                    start: 0,
+                    end: 2,
+                    suffix: '.png'
+                }),
+            duration: 150,
+            yoyo: true
+        });
+
+        const oKeyH = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.J);
+        // Attack 1
+        oKeyH.on("down", () => {
+            oSlimeboy.play('slimeboyAttack1');
+        });
+        // Hit/miss
+        oSlimeboy.on('animationstart', (animation) => {
+            if (animation.key === 'slimeboyAttack1') {
+                this.swing('slimeboyAttack1');
+            }
+        });
+
+    }
+
+    swing(sAnimation) {
+        this.aNotes.forEach((oSprite) => {
+            if (520 < oSprite.y & oSprite.y < 544 & sAnimation) {
+
+                // Right track
+                if (sAnimation === 'slimeboyAttack1') {
+                    switch (oSprite.texture.key) {
+                        case 'slimeSprite':
+                            oSprite.play('slimeDie');
+                            break;
+                    }
+                }
+
+                // //Left track
+                // if (sAnimation === '') {
+                //     switch (oSprite.texture.key) {
+                //         case '':
+                //             oSprite.play('');
+                //             break;
+                //     }
+                // }
+            }
+        });
+    }
 
     demonAnimations() {
         this.anims.create({
@@ -243,17 +308,5 @@ class GameScene extends Phaser.Scene {
         oWiz.play('wizIdleRight');
     };
 
-    swing(sAnimation) {
-        this.aNotes.forEach((oSprite) => {
-            if (520 < oSprite.y & oSprite.y < 544) {
-                switch (oSprite.texture.key) {
-                    case 'slimeSprite':
-                        console.log(this.aNotes);
-                        oSprite.play('slimeDie');
-                        break;
-                }
-            }
-        });
-    }
 }
 export default GameScene;

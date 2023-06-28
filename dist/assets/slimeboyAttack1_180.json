@@ -1,0 +1,78 @@
+{
+	"textures": [
+		{
+			"image": "slimeboyAttack1.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 768,
+				"h": 180
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "slimeboyAttack1-0.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 256,
+						"h": 180
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 256,
+						"h": 180
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 256,
+						"h": 180
+					}
+				},
+				{
+					"filename": "slimeboyAttack1-1.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 256,
+						"h": 180
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 180,
+						"h": 180
+					},
+					"frame": {
+						"x": 256,
+						"y": 1,
+						"w": 256,
+						"h": 180
+					}
+				},
+				{
+					"filename": "slimeboyAttack1-2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 256,
+						"h": 180
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 256,
+						"h": 180
+					},
+					"frame": {
+						"x": 512,
+						"y": 1,
+						"w": 256,
+						"h": 180
+					}
+				}
+			]
+		}
+	]
+}
