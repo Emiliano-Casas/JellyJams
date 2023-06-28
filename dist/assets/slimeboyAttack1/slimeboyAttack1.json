@@ -1,0 +1,141 @@
+{
+	"textures": [
+		{
+			"image": "slimeboyAttack1.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 1280,
+				"h": 128
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "slimeboyAttack1-0.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 256,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 256,
+						"h": 128
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 256,
+						"h": 128
+					}
+				},
+				{
+					"filename": "slimeboyAttack1-1.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 256,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 256,
+						"h": 128
+					},
+					"frame": {
+						"x": 256,
+						"y": 1,
+						"w": 256,
+						"h": 128
+					}
+				},
+				{
+					"filename": "slimeboyAttack1-2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 256,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 256,
+						"h": 128
+					},
+					"frame": {
+						"x": 512,
+						"y": 1,
+						"w": 256,
+						"h": 128
+					}
+				},
+				{
+					"filename": "slimeboyAttack1-3.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 256,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 256,
+						"h": 128
+					},
+					"frame": {
+						"x": 768,
+						"y": 1,
+						"w": 256,
+						"h": 128
+					}
+				},
+				{
+					"filename": "slimeboyAttack1-4.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 256,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 256,
+						"h": 128
+					},
+					"frame": {
+						"x": 1024,
+						"y": 1,
+						"w": 256,
+						"h": 128
+					}
+				},
+				{
+					"filename": "slimeboyAttack1-5.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 256,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 256,
+						"h": 128
+					},
+					"frame": {
+						"x": 1280,
+						"y": 1,
+						"w": 256,
+						"h": 128
+					}
+				}
+			]
+		}
+	]
+}

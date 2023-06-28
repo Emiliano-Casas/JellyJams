@@ -11,8 +11,13 @@ class GameScene extends Phaser.Scene {
         // Slime boy
         this.load.atlas(
             'slimeboyAttack1Sprite',
-            './assets/slimeboyAttack1_180.png',
-            './assets/slimeboyAttack1_180.json'
+            './assets/slimeboyAttack1/slimeboyAttack1.png',
+            './assets/slimeboyAttack1/slimeboyAttack1.json'
+        );
+        this.load.atlas(
+            'slimeboyIdle1Sprite',
+            './assets/slimeboyIdle1/slimeboyIdle1.png',
+            './assets/slimeboyIdle1/slimeboyIdle1.json'
         );
 
         // Slime
@@ -49,6 +54,8 @@ class GameScene extends Phaser.Scene {
 
         // this.createWiz();
         this.createSlimeboy();
+        this.createSlimeboy2();
+        this.createSlimeboy3();
         this.slimeAnimations();
         this.demonAnimations();
 
@@ -85,9 +92,11 @@ class GameScene extends Phaser.Scene {
     };
 
     createSlimeboy() {
-        const oSlimeboy = this.physics.add.sprite(386, 580, 'slimeboyAttack1Sprite');
+        const oSlimeboy = this.physics.add.sprite(256, 500, 'slimeboyAttack1Sprite');
+        oSlimeboy.setOrigin(0,0);
 
         // animations
+        this.add.text(256, 480, "150ms");
         this.anims.create({
             key: 'slimeboyAttack1',
             frames: this.anims.generateFrameNames(
@@ -95,11 +104,23 @@ class GameScene extends Phaser.Scene {
                 {
                     prefix: 'slimeboyAttack1-',
                     start: 0,
-                    end: 2,
+                    end: 4,
                     suffix: '.png'
                 }),
-            duration: 150,
-            yoyo: true
+            duration: 150
+        });
+        this.anims.create({
+            key: 'slimeboyIdle1',
+            frames: this.anims.generateFrameNames(
+                'slimeboyIdle1Sprite',
+                {
+                    prefix: 'slimeboyIdle1-',
+                    start: 0,
+                    end: 1,
+                    suffix: '.png'
+                }),
+            duration: 1000,
+            repeat: -1
         });
 
         const oKeyH = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.J);
@@ -107,6 +128,10 @@ class GameScene extends Phaser.Scene {
         oKeyH.on("down", () => {
             oSlimeboy.play('slimeboyAttack1');
         });
+        oSlimeboy.on('animationcomplete-slimeboyAttack1', () => {
+            oSlimeboy.play('slimeboyIdle1');
+        })
+
         // Hit/miss
         oSlimeboy.on('animationstart', (animation) => {
             if (animation.key === 'slimeboyAttack1') {
@@ -114,6 +139,98 @@ class GameScene extends Phaser.Scene {
             }
         });
 
+        // Idle
+        oSlimeboy.play("slimeboyIdle1");
+    }
+
+    createSlimeboy2() {
+        const oSlimeboy = this.physics.add.sprite(320, 100, 'slimeboyAttack1Sprite');
+        oSlimeboy.setOrigin(0,0);
+
+        // animations
+        this.add.text(320, 80, "600ms");
+        this.anims.create({
+            key: 'slimeboyAttack1_2',
+            frames: this.anims.generateFrameNames(
+                'slimeboyAttack1Sprite',
+                {
+                    prefix: 'slimeboyAttack1-',
+                    start: 0,
+                    end: 4,
+                    suffix: '.png'
+                }),
+            duration: 600
+        });
+        this.anims.create({
+            key: 'slimeboyIdle1',
+            frames: this.anims.generateFrameNames(
+                'slimeboyIdle1Sprite',
+                {
+                    prefix: 'slimeboyIdle1-',
+                    start: 0,
+                    end: 1,
+                    suffix: '.png'
+                }),
+            duration: 1000,
+            repeat: -1
+        });
+
+        const oKeyH = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.J);
+        // Attack 1
+        oKeyH.on("down", () => {
+            oSlimeboy.play('slimeboyAttack1_2');
+        });
+        oSlimeboy.on('animationcomplete-slimeboyAttack1_2', () => {
+            oSlimeboy.play('slimeboyIdle1');
+        })
+
+        // Idle
+        oSlimeboy.play("slimeboyIdle1");
+    }
+
+    createSlimeboy3() {
+        const oSlimeboy = this.physics.add.sprite(100, 100, 'slimeboyAttack1Sprite');
+        oSlimeboy.setOrigin(0,0);
+
+        // animations
+        this.add.text(100, 80, "6000ms");
+        this.anims.create({
+            key: 'slimeboyAttack1_3',
+            frames: this.anims.generateFrameNames(
+                'slimeboyAttack1Sprite',
+                {
+                    prefix: 'slimeboyAttack1-',
+                    start: 0,
+                    end: 4,
+                    suffix: '.png'
+                }),
+            duration: 6000
+        });
+        this.anims.create({
+            key: 'slimeboyIdle1',
+            frames: this.anims.generateFrameNames(
+                'slimeboyIdle1Sprite',
+                {
+                    prefix: 'slimeboyIdle1-',
+                    start: 0,
+                    end: 1,
+                    suffix: '.png'
+                }),
+            duration: 1000,
+            repeat: -1
+        });
+
+        const oKeyH = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.J);
+        // Attack 1
+        oKeyH.on("down", () => {
+            oSlimeboy.play('slimeboyAttack1_3');
+        });
+        oSlimeboy.on('animationcomplete-slimeboyAttack1_3', () => {
+            oSlimeboy.play('slimeboyIdle1');
+        })
+
+        // Idle
+        oSlimeboy.play("slimeboyIdle1");
     }
 
     swing(sAnimation) {
