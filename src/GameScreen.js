@@ -3,21 +3,50 @@ import Phaser from "phaser";
 class GameScene extends Phaser.Scene {
 
     aNotes = [];
+    oPos = {
+        slimAttack1: { x: 384, y: 500 },
+        slimInit: { x: 256, y: 500 },
+        slimRightJump: { x1: 299, x2: 341 },
+        slimRightBack: { x1: 341, x2: 299 }
+    };
+    oTime = {
+        jToHit: { total: 215, jumpFact: 0.4, attackFact: 0.6 },
+        jumpBackTimeout: null
+    };
+    oRhythm = {
+        bRightAtt: true
+    }
 
     preload() {
+
         this.load.image('background', './assets/background.jpg');
         // Audio        
         this.load.audio('metro', './assets/metro_180bpm_5min.mp3');
         // Slime boy
         this.load.atlas(
-            'slimeboyAttack1Sprite',
-            './assets/slimeboyAttack1/slimeboyAttack1.png',
-            './assets/slimeboyAttack1/slimeboyAttack1.json'
+            'slimIdle1Sprite',
+            './assets/slimIdle1/slimIdle1.png',
+            './assets/slimIdle1/slimIdle1.json'
         );
         this.load.atlas(
-            'slimeboyIdle1Sprite',
-            './assets/slimeboyIdle1/slimeboyIdle1.png',
-            './assets/slimeboyIdle1/slimeboyIdle1.json'
+            'slimRightJumpSprite',
+            './assets/slimRightJump/slimRightJump.png',
+            './assets/slimRightJump/slimRightJump.json'
+        );
+        this.load.atlas(
+            'slimRightBackSprite',
+            './assets/slimRightBack/slimRightBack.png',
+            './assets/slimRightBack/slimRightBack.json'
+        );
+        this.load.atlas(
+            'slimAttack10Sprite',
+            './assets/slimAttack10/slimAttack10.png',
+            './assets/slimAttack10/slimAttack10.json'
+        );
+        this.load.atlas(
+            'slimAttack11Sprite',
+            './assets/slimAttack11/slimAttack11.png',
+            './assets/slimAttack11/slimAttack11.json'
         );
 
         // Slime
@@ -52,10 +81,11 @@ class GameScene extends Phaser.Scene {
         this.add.text(80, 520, "--------------------------------------------------");
         this.add.text(80, 544, "--------------------------------------------------");
 
+        // // TESTING INPUTS
+        // const element = this.add.dom(320, 320).createFromCache('form');
+
         // this.createWiz();
-        this.createSlimeboy();
-        this.createSlimeboy2();
-        this.createSlimeboy3();
+        this.createslim();
         this.slimeAnimations();
         this.demonAnimations();
 
@@ -91,30 +121,20 @@ class GameScene extends Phaser.Scene {
         });
     };
 
-    createSlimeboy() {
-        const oSlimeboy = this.physics.add.sprite(256, 500, 'slimeboyAttack1Sprite');
-        oSlimeboy.setOrigin(0,0);
+    createslim() {
+        const oSlim = this.add.sprite(
+            this.oPos.slimInit.x,
+            this.oPos.slimInit.y,
+            'slimIdle1Sprite');
+        oSlim.setOrigin(0, 0);
 
         // animations
-        this.add.text(256, 480, "150ms");
         this.anims.create({
-            key: 'slimeboyAttack1',
+            key: 'slimIdle1',
             frames: this.anims.generateFrameNames(
-                'slimeboyAttack1Sprite',
+                'slimIdle1Sprite',
                 {
-                    prefix: 'slimeboyAttack1-',
-                    start: 0,
-                    end: 4,
-                    suffix: '.png'
-                }),
-            duration: 150
-        });
-        this.anims.create({
-            key: 'slimeboyIdle1',
-            frames: this.anims.generateFrameNames(
-                'slimeboyIdle1Sprite',
-                {
-                    prefix: 'slimeboyIdle1-',
+                    prefix: 'slimIdle1-',
                     start: 0,
                     end: 1,
                     suffix: '.png'
@@ -122,115 +142,129 @@ class GameScene extends Phaser.Scene {
             duration: 1000,
             repeat: -1
         });
-
-        const oKeyH = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.J);
-        // Attack 1
-        oKeyH.on("down", () => {
-            oSlimeboy.play('slimeboyAttack1');
+        this.anims.create({
+            key: 'slimRightJump',
+            frames: this.anims.generateFrameNames(
+                'slimRightJumpSprite',
+                {
+                    prefix: 'slimRightJump-',
+                    start: 0,
+                    end: 2,
+                    suffix: '.png'
+                }),
+            duration: this.oTime.jToHit.total * this.oTime.jToHit.jumpFact,
         });
-        oSlimeboy.on('animationcomplete-slimeboyAttack1', () => {
-            oSlimeboy.play('slimeboyIdle1');
-        })
+        this.anims.create({
+            key: 'slimRightBack',
+            frames: this.anims.generateFrameNames(
+                'slimRightBackSprite',
+                {
+                    prefix: 'slimRightBack-',
+                    start: 0,
+                    end: 2,
+                    suffix: '.png'
+                }),
+            duration: this.oTime.jToHit.total * this.oTime.jToHit.jumpFact,
+        });
+        this.anims.create({
+            key: 'slimAttack10',
+            frames: this.anims.generateFrameNames(
+                'slimAttack10Sprite',
+                {
+                    prefix: 'slimAttack10-',
+                    start: 0,
+                    end: 2,
+                    suffix: '.png'
+                }),
+            duration: this.oTime.jToHit.total * this.oTime.jToHit.attackFact,
+        });
+        this.anims.create({
+            key: 'slimAttack11',
+            frames: this.anims.generateFrameNames(
+                'slimAttack11Sprite',
+                {
+                    prefix: 'slimAttack11-',
+                    start: 0,
+                    end: 2,
+                    suffix: '.png'
+                }),
+            duration: this.oTime.jToHit.total * this.oTime.jToHit.attackFact,
+        });
+
+        // Move slim
+        oSlim.on('animationupdate', (oAnim, oFrame, oSprite) => {
+            const iJumpDiff = this.oPos.slimAttack1.x - this.oPos.slimInit.x;
+            if (oAnim.key === 'slimRightJump') {
+                oSprite.x = this.oPos.slimInit.x + iJumpDiff * oFrame.progress;
+            } else if (oAnim.key === 'slimRightBack') {
+                oSprite.x = this.oPos.slimAttack1.x - iJumpDiff * oFrame.progress;
+            }
+        });
+        oSlim.on('animationstart', (oAnim) => {
+            switch (oAnim.key) {
+                case 'slimAttack10':
+                    this.oRhythm.bRightAtt = false;
+                    oSlim.x = this.oPos.slimAttack1.x;
+                    oSlim.y = this.oPos.slimAttack1.y;
+                    break;
+                case 'slimAttack11':
+                    this.oRhythm.bRightAtt = true;
+                    break;
+            }
+        });
+
+        // Attack J
+        const oJ = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.J);
+        oJ.on("down", () => {
+            if (oSlim.x === this.oPos.slimAttack1.x) {
+                // In attack position x
+                // if (oSlim.texture.key === 'slimAttack10Sprite') {
+                if (this.oRhythm.bRightAtt) {
+                    oSlim.play('slimAttack10');
+                } else {
+                    oSlim.play('slimAttack11');
+                }
+            } else {
+                oSlim.play('slimRightJump');
+            }
+        });
+        oSlim.on('animationcomplete-slimRightJump', () => {
+            oSlim.play('slimAttack10');
+        });
+        oSlim.on('animationcomplete-slimAttack10', () => {
+            oSlim.play('slimIdle1');
+            this.oTime.jumpBackTimeout = setTimeout(() => {
+                oSlim.play('slimRightBack');
+            }, 500);
+        });
+        oSlim.on('animationcomplete-slimAttack11', () => {
+            oSlim.play('slimIdle1');
+            this.oTime.jumpBackTimeout = setTimeout(() => {
+                oSlim.play('slimRightBack');
+            }, 500);
+        });
+
+        // Attack F
+        const oKeyF = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
+        oKeyF.on("down", () => {
+            oSlim.play('slimRightBack');
+        });
+        oSlim.on('animationcomplete-slimRightBack', () => {
+            oSlim.x = this.oPos.slimInit.x;
+            oSlim.y = this.oPos.slimInit.y;
+            oSlim.play('slimIdle1');
+        });
 
         // Hit/miss
-        oSlimeboy.on('animationstart', (animation) => {
-            if (animation.key === 'slimeboyAttack1') {
-                this.swing('slimeboyAttack1');
+        oSlim.on('animationstart', (animation) => {
+            if (animation.key === 'slimAttack10' | animation.key === 'slimAttack11') {
+                clearTimeout(this.oTime.jumpBackTimeout);
+                this.swing('slimAttack1');
             }
         });
 
         // Idle
-        oSlimeboy.play("slimeboyIdle1");
-    }
-
-    createSlimeboy2() {
-        const oSlimeboy = this.physics.add.sprite(320, 100, 'slimeboyAttack1Sprite');
-        oSlimeboy.setOrigin(0,0);
-
-        // animations
-        this.add.text(320, 80, "600ms");
-        this.anims.create({
-            key: 'slimeboyAttack1_2',
-            frames: this.anims.generateFrameNames(
-                'slimeboyAttack1Sprite',
-                {
-                    prefix: 'slimeboyAttack1-',
-                    start: 0,
-                    end: 4,
-                    suffix: '.png'
-                }),
-            duration: 600
-        });
-        this.anims.create({
-            key: 'slimeboyIdle1',
-            frames: this.anims.generateFrameNames(
-                'slimeboyIdle1Sprite',
-                {
-                    prefix: 'slimeboyIdle1-',
-                    start: 0,
-                    end: 1,
-                    suffix: '.png'
-                }),
-            duration: 1000,
-            repeat: -1
-        });
-
-        const oKeyH = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.J);
-        // Attack 1
-        oKeyH.on("down", () => {
-            oSlimeboy.play('slimeboyAttack1_2');
-        });
-        oSlimeboy.on('animationcomplete-slimeboyAttack1_2', () => {
-            oSlimeboy.play('slimeboyIdle1');
-        })
-
-        // Idle
-        oSlimeboy.play("slimeboyIdle1");
-    }
-
-    createSlimeboy3() {
-        const oSlimeboy = this.physics.add.sprite(100, 100, 'slimeboyAttack1Sprite');
-        oSlimeboy.setOrigin(0,0);
-
-        // animations
-        this.add.text(100, 80, "6000ms");
-        this.anims.create({
-            key: 'slimeboyAttack1_3',
-            frames: this.anims.generateFrameNames(
-                'slimeboyAttack1Sprite',
-                {
-                    prefix: 'slimeboyAttack1-',
-                    start: 0,
-                    end: 4,
-                    suffix: '.png'
-                }),
-            duration: 6000
-        });
-        this.anims.create({
-            key: 'slimeboyIdle1',
-            frames: this.anims.generateFrameNames(
-                'slimeboyIdle1Sprite',
-                {
-                    prefix: 'slimeboyIdle1-',
-                    start: 0,
-                    end: 1,
-                    suffix: '.png'
-                }),
-            duration: 1000,
-            repeat: -1
-        });
-
-        const oKeyH = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.J);
-        // Attack 1
-        oKeyH.on("down", () => {
-            oSlimeboy.play('slimeboyAttack1_3');
-        });
-        oSlimeboy.on('animationcomplete-slimeboyAttack1_3', () => {
-            oSlimeboy.play('slimeboyIdle1');
-        })
-
-        // Idle
-        oSlimeboy.play("slimeboyIdle1");
+        oSlim.play("slimIdle1");
     }
 
     swing(sAnimation) {
@@ -238,7 +272,7 @@ class GameScene extends Phaser.Scene {
             if (520 < oSprite.y & oSprite.y < 544 & sAnimation) {
 
                 // Right track
-                if (sAnimation === 'slimeboyAttack1') {
+                if (sAnimation === 'slimAttack1') {
                     switch (oSprite.texture.key) {
                         case 'slimeSprite':
                             oSprite.play('slimeDie');

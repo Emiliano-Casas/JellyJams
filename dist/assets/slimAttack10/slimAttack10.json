@@ -1,0 +1,78 @@
+{
+	"textures": [
+		{
+			"image": "slimAttack10.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 384,
+				"h": 128
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "slimAttack10-0.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 128,
+						"h": 128
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 128,
+						"h": 128
+					}
+				},
+				{
+					"filename": "slimAttack10-1.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 128,
+						"h": 128
+					},
+					"frame": {
+						"x": 128,
+						"y": 1,
+						"w": 128,
+						"h": 128
+					}
+				},
+				{
+					"filename": "slimAttack10-2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 128,
+						"h": 128
+					},
+					"frame": {
+						"x": 256,
+						"y": 1,
+						"w": 128,
+						"h": 128
+					}
+				}
+			]
+		}
+	]
+}

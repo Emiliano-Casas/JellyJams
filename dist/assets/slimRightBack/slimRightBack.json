@@ -1,0 +1,78 @@
+{
+	"textures": [
+		{
+			"image": "slimRightBack.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 384,
+				"h": 128
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "slimRightBack-0.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 128,
+						"h": 128
+					},
+					"frame": {
+						"x": 256,
+						"y": 1,
+						"w": 128,
+						"h": 128
+					}
+				},
+				{
+					"filename": "slimRightBack-1.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 128,
+						"h": 128
+					},
+					"frame": {
+						"x": 128,
+						"y": 1,
+						"w": 128,
+						"h": 128
+					}
+				},
+				{
+					"filename": "slimRightBack-2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 128,
+						"h": 128
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 128,
+						"h": 128
+					}
+				}
+			]
+		}
+	]
+}

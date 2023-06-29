@@ -1,7 +1,7 @@
 {
 	"textures": [
 		{
-			"image": "slimeboyIdle1.png",
+			"image": "slimIdle1.png",
 			"format": "RGBA8888",
 			"size": {
 				"w": 256,
@@ -10,7 +10,7 @@
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "slimeboyIdle1-0.png",
+					"filename": "slimIdle1-0.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -31,7 +31,7 @@
 					}
 				},
                 {
-					"filename": "slimeboyIdle1-1.png",
+					"filename": "slimIdle1-1.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {

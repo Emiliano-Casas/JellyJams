@@ -14,6 +14,11 @@ const oGameConfig = {
     //     parent: 'canvasParent',
     //     mode: Phaser.Scale.FIT
     // }
+    
+    // // TESTING INPUT
+    // ,dom: {
+    //     createContainer: true
+    // },
 };
 
 const oGame = new Phaser.Game(oGameConfig);
