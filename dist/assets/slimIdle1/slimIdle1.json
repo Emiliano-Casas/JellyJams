@@ -4,7 +4,7 @@
 			"image": "slimIdle1.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 256,
+				"w": 1280,
 				"h": 128
 			},
 			"scale": 1,
@@ -14,7 +14,7 @@
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 256,
+						"w": 128,
 						"h": 128
 					},
 					"spriteSourceSize": {
@@ -35,7 +35,7 @@
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 256,
+						"w": 128,
 						"h": 128
 					},
 					"spriteSourceSize": {
@@ -46,6 +46,174 @@
 					},
 					"frame": {
 						"x": 128,
+						"y": 1,
+						"w": 128,
+						"h": 128
+					}
+				},
+                {
+					"filename": "slimIdle1-2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 128,
+						"h": 128
+					},
+					"frame": {
+						"x": 256,
+						"y": 1,
+						"w": 128,
+						"h": 128
+					}
+				},
+                {
+					"filename": "slimIdle1-3.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 128,
+						"h": 128
+					},
+					"frame": {
+						"x": 384,
+						"y": 1,
+						"w": 128,
+						"h": 128
+					}
+				},
+                {
+					"filename": "slimIdle1-4.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 128,
+						"h": 128
+					},
+					"frame": {
+						"x": 512,
+						"y": 1,
+						"w": 128,
+						"h": 128
+					}
+				},
+                {
+					"filename": "slimIdle1-5.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 128,
+						"h": 128
+					},
+					"frame": {
+						"x": 640,
+						"y": 1,
+						"w": 128,
+						"h": 128
+					}
+				},
+                {
+					"filename": "slimIdle1-6.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 128,
+						"h": 128
+					},
+					"frame": {
+						"x": 768,
+						"y": 1,
+						"w": 128,
+						"h": 128
+					}
+				},
+                {
+					"filename": "slimIdle1-7.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 128,
+						"h": 128
+					},
+					"frame": {
+						"x": 896,
+						"y": 1,
+						"w": 128,
+						"h": 128
+					}
+				},
+                {
+					"filename": "slimIdle1-8.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 128,
+						"h": 128
+					},
+					"frame": {
+						"x": 1024,
+						"y": 1,
+						"w": 128,
+						"h": 128
+					}
+				},
+                {
+					"filename": "slimIdle1-9.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 128,
+						"h": 128
+					},
+					"frame": {
+						"x": 1152,
 						"y": 1,
 						"w": 128,
 						"h": 128

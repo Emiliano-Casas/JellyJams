@@ -136,7 +136,7 @@ class GameScene extends Phaser.Scene {
                 {
                     prefix: 'slimIdle1-',
                     start: 0,
-                    end: 1,
+                    end: 9,
                     suffix: '.png'
                 }),
             duration: 1000,
